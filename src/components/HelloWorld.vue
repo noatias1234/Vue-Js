@@ -1,58 +1,34 @@
-<template>
-  <div>
-<div v-bind:id="headingId">HEY</div>
-<h2 v-if="num === 0"> The number is zero</h2>
- <h2 v-else-if="num > 0"> The number is poistive</h2>
-<h2 v-else-if="num < 0"> The number is negative</h2>
-<h2 v-else>Not a number</h2> 
+<template> <div>
+  <template v-for="name in names" >
+   <h2 :key="name" v-if="name === 'Simon'">{{ name }}</h2>
+</template></div>
 
-<!-- array of strings -->
-<h3 v-for="name in names" :key="name">{{ name }}</h3>
-<h3 v-for="(name,index) in names" :key="name">{{ index }} {{ name }}</h3>
-
-<!-- array of object -->
-<h3 v-for="name in fullNames" :key="name.first">{{ name.first }} {{ name.last }}</h3>
-
-<!-- array of arrays -->
-<div v-for="actor in actors" :key="actor.name">
-  <h2>{{ actor.name }}</h2>
-  <h3 v-for= "movie in actor.movies" :key="movie"> {{movie}}</h3>
-</div>
-</div>
+<!-- calculate -->
+<h2>{{ 2+3+5 }}</h2>
+<h2>Add Method - {{ add(2,3,5) }}</h2>
+<h2>Multipl method - {{ multiply(5) }}</h2>
+<h2>Multipl method - {{ multiply(baseValue) }}</h2>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
-  },
   data(){
 	return{
-		name: '<b>someString</b>',
-		headingId: '123',
-		isDisabled: true,
-    num: 3,
     names: ['Roi','Simon','Bar', 'Vadim','David'],
-    fullNames: [
-      {first:'Roi', last:'Peretz'},
-      {first:'Simon', last:'Kriheli'},
-      {first:'Bar', last:'Noa'},
-      {first:'Vadim', last:'A'},
-      {first:'David', last:'M'},
-    ],
-    actors:[
-      {
-        name:'Christian Bale',
-        movies:['Batman','The prestige'],
-      },
-      {
-        name:'Leonardo Decaprio',
-        movies:['Titanic','Unknown'],
-      },
-    ]
-	};
-}
+    baseMultiply:5,
+    baseValue:2,
+   }
+},
+methods:{
+  add(a,b,c)
+  { 
+    return a+b+c
+  },
+  multiply(num){
+    return num * this.baseMultiply
+  },
+},
 }
 </script>
 
