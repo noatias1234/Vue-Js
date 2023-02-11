@@ -4,7 +4,7 @@
       {{ JSON.stringify(formValues,null,2) }}
     </pre> 
  
-  <form>
+  <form @submit="submitForm">
     <div>
       <label for="name">Name</label>
       <input type="text" id="name" v-model="formValues.name">
@@ -35,6 +35,42 @@
         <option value="USA">USA</option>
       </select>
     </div>    
+
+    <div>
+      <input type="checkbox" id="remoteWork" v-model="formValues.remoteWork"/>
+      <label for="remoteWork"><b>Open to remote work?</b></label>
+    </div>
+
+    <div>
+      <label for="yearsOfExperience">Years Of Experience</label>
+     
+      <label for="0-2">0-2</label>
+      <input type="radio" id="0-2" value="0-2" v-model="formValues.yearsOfExpiriece"
+       />
+      
+      <label for="3-5">3-5</label>
+      <input type="radio" id="3-5" value="3-5" v-model="formValues.yearsOfExpiriece" />
+     
+      <label for="6-10">6-10</label>
+      <input type="radio" id="6-10" value="6-10" v-model="formValues.yearsOfExpiriece" />
+     
+      <label for="10+">10+</label>
+      <input type="radio" id="10+" value="10+" v-model="formValues.yearsOfExpiriece" />
+    </div>
+
+    <div>
+      <label>Skill set</label>
+      <input type="checkbox" id="html" value="html" v-model="formValues.skillSet"/>
+      <label for="html">HTML</label>
+      <input type="checkbox" id="c#" value="c#" v-model="formValues.skillSet"/>
+      <label for="c$">C#</label>     
+      <input type="checkbox" id="css" value="css"  v-model="formValues.skillSet"/>
+      <label for="css">CSS</label>
+    </div>    
+
+    <div>
+      <button>Submit</button>
+    </div>
 </form>
  
  </div>
@@ -50,13 +86,19 @@ export default {
       name:'',
       profileSummary: '',
       country:'',
-      jobLocation:[]
+      jobLocation:[],
+      remoteWork:false,
+      skillSet:[],
+      yearsOfExpiriece:''
     },
    
    }
 },
 methods:{
- 
+ submitForm(event){
+  event.preventDefault();
+  console.log('Form values:', this.formValues)
+ }
 },
 }
 </script>
@@ -64,7 +106,7 @@ methods:{
 
 <style scoped>
 h3 {
-  margin: 40px 0 0;
+  margin: 40px;
 }
 ul {
   list-style-type: none;
