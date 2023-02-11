@@ -1,14 +1,16 @@
 <template><div>
 <h2>{{ name }}</h2>
- <button v-on:click="name = 'Batman'">Change Name</button>
- 
+ <!-- <button v-on:click="name = 'Batman'">Change Name</button> -->
+ <button v-on:click="changeName($event), increaseMethod(1,$event)">Change Name</button>
+
+
   <h2>{{ count }}</h2>
  
   <button v-on:click="count += 1">Increase</button>
   <button v-on:click="count -= 1">Decrease</button>
 
-  <button v-on:click="increaseMethod(1)">Increase</button>
-  <button v-on:click="decreaseMethod(1)">Decrease</button></div>
+  <button @click="increaseMethod(1, $event)">Increase</button>
+  <button @click="decreaseMethod(1)">Decrease</button></div>
 </template>
 
 <script>
@@ -24,8 +26,13 @@ export default {
    }
 },
 methods:{
-  increaseMethod(num){
+  changeName(event){
+    this.name='Batman'
+    console.log("event",event);
+  },
+  increaseMethod(num, event){
     this.count+=num;
+    console.log('Event',event)
   },
   decreaseMethod(num){
     this.count-=num;
