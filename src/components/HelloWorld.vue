@@ -1,42 +1,62 @@
-<template><div>
-<h2>{{ name }}</h2>
- <!-- <button v-on:click="name = 'Batman'">Change Name</button> -->
- <button v-on:click="changeName($event), increaseMethod(1,$event)">Change Name</button>
-
-
-  <h2>{{ count }}</h2>
+<template>
+  <div>
+    <pre>
+      {{ JSON.stringify(formValues,null,2) }}
+    </pre> 
  
-  <button v-on:click="count += 1">Increase</button>
-  <button v-on:click="count -= 1">Decrease</button>
+  <form>
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" v-model="formValues.name">
+    </div>
+ 
+    <div>
+      <label>Profile Summary</label>
+      <textarea id="profile" v-model="formValues.profileSummary" />
+     </div>
 
-  <button @click="increaseMethod(1, $event)">Increase</button>
-  <button @click="decreaseMethod(1)">Decrease</button></div>
+    <div>
+      <label for="country">Country</label>
+      <select id="country" v-model="formValues.country">
+        <option value="">Select a country</option>
+        <option value="Vietnam">Vietnam</option>
+        <option value="India">India</option>
+        <option value="Israel">Israel</option>
+        <option value="USA">USA</option>
+      </select>
+    </div>    
+
+    <div>
+      <label for="jobLocation">Job Location</label>
+      <select id="jobLocation"  multiple v-model="formValues.jobLocation">
+        <option value="Vietnam">Vietnam</option>
+        <option value="India">India</option>
+        <option value="Israel">Israel</option>
+        <option value="USA">USA</option>
+      </select>
+    </div>    
+</form>
+ 
+ </div>
 </template>
 
 <script>
+
 export default {
   name: 'HelloWorld',
   data(){
 	return{
-    name:'Vue App',
-    names: ['Roi','Simon','Bar', 'Vadim','David'],
-    baseMultiply:5,
-    baseValue:2,
-    count:0
+    formValues:{
+      name:'',
+      profileSummary: '',
+      country:'',
+      jobLocation:[]
+    },
+   
    }
 },
 methods:{
-  changeName(event){
-    this.name='Batman'
-    console.log("event",event);
-  },
-  increaseMethod(num, event){
-    this.count+=num;
-    console.log('Event',event)
-  },
-  decreaseMethod(num){
-    this.count-=num;
-  }
+ 
 },
 }
 </script>
