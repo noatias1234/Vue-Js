@@ -1,111 +1,51 @@
 <template>
   <div>
-    <pre>
-      {{ JSON.stringify(formValues,null,2) }}
-    </pre> 
- 
-  <form @submit="submitForm">
-    <div>
-      <!-- remove white spaces with trim -->
-      <label for="name">Name</label>
-      <input type="text" id="name" v-model.trim="formValues.name">
-  
-      <label for="age">Age</label>
-      <input @keyup.enter="submitForm" type="number" id="age" v-model.number="formValues.age">
-  
-    </div>
- 
-    <div>
-      <label>Profile Summary</label>
-      <textarea id="profile" v-model="formValues.profileSummary" />
-     </div>
-
-    <div>
-      <label for="country">Country</label>
-      <select id="country" v-model="formValues.country">
-        <option value="">Select a country</option>
-        <option value="Vietnam">Vietnam</option>
-        <option value="India">India</option>
-        <option value="Israel">Israel</option>
-        <option value="USA">USA</option>
-      </select>
-    </div>    
-
-    <div>
-      <label for="jobLocation">Job Location</label>
-      <select id="jobLocation"  multiple v-model="formValues.jobLocation">
-        <option value="Vietnam">Vietnam</option>
-        <option value="India">India</option>
-        <option value="Israel">Israel</option>
-        <option value="USA">USA</option>
-      </select>
-    </div>    
-
-    <div>
-      <input type="checkbox" id="remoteWork" v-model="formValues.remoteWork"/>
-      <label for="remoteWork"><b>Open to remote work?</b></label>
-    </div>
-
-    <div>
-      <label for="yearsOfExperience">Years Of Experience</label>
-     
-      <label for="0-2">0-2</label>
-      <input type="radio" id="0-2" value="0-2" v-model="formValues.yearsOfExpiriece"
-       />
-      
-      <label for="3-5">3-5</label>
-      <input type="radio" id="3-5" value="3-5" v-model="formValues.yearsOfExpiriece" />
-     
-      <label for="6-10">6-10</label>
-      <input type="radio" id="6-10" value="6-10" v-model="formValues.yearsOfExpiriece" />
-     
-      <label for="10+">10+</label>
-      <input type="radio" id="10+" value="10+" v-model="formValues.yearsOfExpiriece" />
-    </div>
-
-    <div>
-      <label>Skill set</label>
-      <input type="checkbox" id="html" value="html" v-model="formValues.skillSet"/>
-      <label for="html">HTML</label>
-      <input type="checkbox" id="c#" value="c#" v-model="formValues.skillSet"/>
-      <label for="c$">C#</label>     
-      <input type="checkbox" id="css" value="css"  v-model="formValues.skillSet"/>
-      <label for="css">CSS</label>
-    </div>    
-
-    <div>
-      <button>Submit</button>
-    </div>
-</form>
- 
- </div>
+    <h2>Computed full name - {{ fullName }}</h2>
+    <h2>Computed total - {{ total }}</h2>
+    <h2 v-for="item in expensiveItems" :key="item.id">
+      {{ item.title }} {{ item.price }}</h2>
+  </div>
 </template>
 
 <script>
 
 export default {
   name: 'HelloWorld',
-  data(){
-	return{
-    formValues:{
-      name:'',
-      profileSummary: '',
-      country:'',
-      jobLocation:[],
-      remoteWork:false,
-      skillSet:[],
-      yearsOfExpiriece:'',
-      age:''
+  data() {
+    return {
+      firstName: 'Sam',
+      lastName: 'David',
+      items: [
+        {
+          id: 1,
+          title: 'TV',
+          price: 300
+        }, {
+          id: 2,
+          title: 'Phone',
+          price: 1000
+        },
+        {
+          id: 1,
+          title: 'Laptop',
+          price: 500
+        },
+      ]
+    }
+  },
+  methods: {},
+  computed: { //Computed properties are automaticly recalculated if their dependencies change , Perfer if we have a big logic 
+    fullName() {
+      return this.firstName + " " + this.lastName;
+    }
+    ,
+    total() {
+      return this.items.reduce((total, curr) => (total = total + curr.price), 0);
     },
-   
-   }
-},
-methods:{
- submitForm(event){
-  event.preventDefault();
-  console.log('Form values:', this.formValues)
- }
-},
+    expensiveItems() {
+      return this.items.filter(item => item.price > 400);
+    }
+  }
 }
 </script>
 
@@ -114,14 +54,17 @@ methods:{
 h3 {
   margin: 40px;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }
