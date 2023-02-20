@@ -6,8 +6,13 @@
  
   <form @submit="submitForm">
     <div>
+      <!-- remove white spaces with trim -->
       <label for="name">Name</label>
-      <input type="text" id="name" v-model="formValues.name">
+      <input type="text" id="name" v-model.trim="formValues.name">
+  
+      <label for="age">Age</label>
+      <input @keyup.enter="submitForm" type="number" id="age" v-model.number="formValues.age">
+  
     </div>
  
     <div>
@@ -89,7 +94,8 @@ export default {
       jobLocation:[],
       remoteWork:false,
       skillSet:[],
-      yearsOfExpiriece:''
+      yearsOfExpiriece:'',
+      age:''
     },
    
    }
