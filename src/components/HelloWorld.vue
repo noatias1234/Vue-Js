@@ -2,6 +2,7 @@
   <div>
     <h2>Computed full name - {{ fullName }}</h2>
     <h2>Computed total - {{ total }}</h2>
+    <button @click="changeFullName">Change full name</button>
     <h2 v-for="item in expensiveItems" :key="item.id">
       {{ item.title }} {{ item.price }}</h2>
   </div>
@@ -33,12 +34,22 @@ export default {
       ]
     }
   },
-  methods: {},
-  computed: { //Computed properties are automaticly recalculated if their dependencies change , Perfer if we have a big logic 
-    fullName() {
-      return this.firstName + " " + this.lastName;
+  methods: {
+    changeFullName() {
+      this.fullName = 'Nate Rosen'
     }
-    ,
+  },
+  computed: { //Computed properties are automaticly recalculated if their dependencies change , Perfer if we have a big logic 
+    fullName: {
+      get() {
+        return this.firstName + " " + this.lastName
+      },
+      set(value) {
+        const names = value.split(' ');
+        this.firstName = names[0];
+        this.lastName = names[1];
+      }
+    },
     total() {
       return this.items.reduce((total, curr) => (total = total + curr.price), 0);
     },
