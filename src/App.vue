@@ -2,16 +2,20 @@
   <div>
     <button @click="showpopUp = true">Show pop up</button>
     <popUp v-show="showpopUp" @close="CloseEvent"></popUp>
+
+    <Input v-model="name" />
   </div>
 </template>
 
 <script>
 import popUp from './components/pop-up.vue';
+import Input from './components/Input.vue';
+
 export default {
   name: 'App',
   data() {
     return {
-      name: 'Bar',
+      name: '',
       showpopUp: false,
     }
   },
@@ -22,6 +26,7 @@ export default {
   },
   components: {
     popUp,
+    Input
   },
   methods: {
     CloseEvent(title) {
