@@ -1,14 +1,33 @@
 <template>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <button @click="showpopUp = true">Show pop up</button>
+    <popUp v-show="showpopUp" @close="CloseEvent"></popUp>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import popUp from './components/pop-up.vue';
 export default {
   name: 'App',
+  data() {
+    return {
+      name: 'Bar',
+      showpopUp: false,
+    }
+  },
+  provide() {
+    return {
+      username: this.name
+    }
+  },
   components: {
-    HelloWorld
+    popUp,
+  },
+  methods: {
+    CloseEvent(title) {
+      this.showpopUp = false,
+        console.log(title);
+    }
   }
 }
 </script>
