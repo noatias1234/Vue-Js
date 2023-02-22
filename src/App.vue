@@ -4,13 +4,9 @@
   <button @click="activeTab = 'TabC'">TAB C</button>
 
 
-  <!-- Instead of that 
-  <TabA v-if="activeTab === 'TabA'" />
-  <TabB v-if="activeTab === 'TabB'" />
-  <TabC v-if="activeTab === 'TabC'" /> -->
-
-  <!-- Do That -->
-  <component :is="activeTab" />
+  <KeepAlive>
+    <component :is="activeTab" />
+  </KeepAlive>
 </template>
 
 <script>
