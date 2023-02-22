@@ -1,23 +1,36 @@
 <template>
-  <NamesList>
-    <template v-slot:default="slotProps">
-      {{ slotProps.firstName }} {{ slotProps.lastName }}
-    </template>
-  </NamesList>
+  <button @click="activeTab = 'TabA'">TAB A</button>
+  <button @click="activeTab = 'TabB'">TAB B</button>
+  <button @click="activeTab = 'TabC'">TAB C</button>
+
+
+  <!-- Instead of that 
+  <TabA v-if="activeTab === 'TabA'" />
+  <TabB v-if="activeTab === 'TabB'" />
+  <TabC v-if="activeTab === 'TabC'" /> -->
+
+  <!-- Do That -->
+  <component :is="activeTab" />
 </template>
 
 <script>
 
-import NamesList from './components/NamesList.vue';
+import TabA from "./components/TabA.vue"
+import TabB from "./components/TabB.vue"
+import TabC from "./components/TabC.vue"
+
 export default {
   name: 'App',
   data() {
     return {
       name: '',
+      activeTab: 'TabA'
     }
   },
   components: {
-    NamesList
+    TabA,
+    TabB,
+    TabC
   }
 
 }
