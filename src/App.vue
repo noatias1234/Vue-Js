@@ -1,32 +1,27 @@
 <template>
-  <button @click="activeTab = 'TabA'">TAB A</button>
-  <button @click="activeTab = 'TabB'">TAB B</button>
-  <button @click="activeTab = 'TabC'">TAB C</button>
-
-
-  <KeepAlive>
-    <component :is="activeTab" />
-  </KeepAlive>
+  <div>
+    <PostList></PostList>
+  </div>
+  <div>
+    <CreatePost></CreatePost>
+  </div>
 </template>
 
 <script>
-
-import TabA from "./components/TabA.vue"
-import TabB from "./components/TabB.vue"
-import TabC from "./components/TabC.vue"
+import PostList from './components/PostList.vue';
+import CreatePost from './components/CreatePost.vue';
 
 export default {
   name: 'App',
   data() {
     return {
       name: '',
-      activeTab: 'TabA'
+
     }
   },
   components: {
-    TabA,
-    TabB,
-    TabC
+    PostList,
+    CreatePost
   }
 
 }
@@ -40,5 +35,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+div {
+  margin: 20px;
+  padding: 3px;
+  background-color: aliceblue;
+
 }
 </style>
