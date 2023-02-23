@@ -1,27 +1,21 @@
 <template>
-  <div>
-    <PostList></PostList>
-  </div>
-  <div>
-    <CreatePost></CreatePost>
-  </div>
+  <Parent></Parent>
+  <Childs></Childs>
 </template>
 
 <script>
-import PostList from './components/PostList.vue';
-import CreatePost from './components/CreatePost.vue';
-
+import Childs from './components/Childs.vue';
+import Parent from './components/Parent.vue';
 export default {
   name: 'App',
   data() {
     return {
       name: '',
-
     }
   },
   components: {
-    PostList,
-    CreatePost
+    Childs,
+    Parent
   }
 
 }
