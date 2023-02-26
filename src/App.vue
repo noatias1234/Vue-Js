@@ -1,11 +1,9 @@
 <template>
-  <ClickCounter />
-  <HoverCounter></HoverCounter>
+  <Data></Data>
 </template>
 
 <script>
-import ClickCounter from "./components/ClickCounter.vue"
-import HoverCounter from "./components/HoverCounter.vue";
+import Data from './CompositionApi/components/Data.vue';
 export default {
   name: 'App',
   data() {
@@ -14,8 +12,7 @@ export default {
     }
   },
   components: {
-    ClickCounter,
-    HoverCounter
+    Data
   }
 
 }
