@@ -1,9 +1,9 @@
 <template>
-  <Methods />
+  <computed />
 </template>
 
 <script>
-import Methods from './CompositionApi/components/Methods.vue';
+import computed from './CompositionApi/components/computed.vue';
 export default {
   name: 'App',
   data() {
@@ -12,7 +12,7 @@ export default {
     }
   },
   components: {
-    Methods
+    computed
   }
 
 }
