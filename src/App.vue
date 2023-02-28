@@ -1,11 +1,9 @@
 <template>
-  <Demo1 />
-  <Demo2 />
+  <Methods />
 </template>
 
 <script>
-import Demo1 from './CompositionApi/components/Demo1.vue';
-import Demo2 from './CompositionApi/components/Demo2.vue';
+import Methods from './CompositionApi/components/Methods.vue';
 export default {
   name: 'App',
   data() {
@@ -14,8 +12,7 @@ export default {
     }
   },
   components: {
-    Demo1,
-    Demo2
+    Methods
   }
 
 }
