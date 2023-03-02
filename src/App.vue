@@ -1,9 +1,9 @@
 <template>
-  <Watch />
+  <ProvideInject />
 </template>
 
 <script>
-import Watch from './CompositionApi/components/Watch.vue';
+import ProvideInject from './CompositionApi/components/ProvideInject.vue';
 export default {
   name: 'App',
   data() {
@@ -12,7 +12,7 @@ export default {
     }
   },
   components: {
-    Watch
+    ProvideInject
   }
 
 }
