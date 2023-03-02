@@ -1,9 +1,9 @@
 <template>
-  <computed />
+  <Watch />
 </template>
 
 <script>
-import computed from './CompositionApi/components/computed.vue';
+import Watch from './CompositionApi/components/Watch.vue';
 export default {
   name: 'App',
   data() {
@@ -12,7 +12,7 @@ export default {
     }
   },
   components: {
-    computed
+    Watch
   }
 
 }
