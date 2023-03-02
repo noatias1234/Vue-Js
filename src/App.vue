@@ -1,11 +1,9 @@
 <template>
-  <LifeCycleC />
-  <LifeCycleO />
+  <TemplateRef />
 </template>
 
 <script>
-import LifeCycleC from './CompositionApi/components/LifeCycleC.vue';
-import LifeCycleO from './CompositionApi/components/LifeCycleO.vue';
+import TemplateRef from './CompositionApi/components/TemplateRef.vue';
 export default {
   name: 'App',
   data() {
@@ -14,7 +12,7 @@ export default {
     }
   },
   components: {
-    LifeCycleC, LifeCycleO
+    TemplateRef
   }
 
 }
