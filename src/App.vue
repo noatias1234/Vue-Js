@@ -1,9 +1,9 @@
 <template>
-  <TemplateRef />
+  <Person />
 </template>
 
 <script>
-import TemplateRef from './CompositionApi/components/TemplateRef.vue';
+import Person from './CompositionApi/components/Person.vue';
 export default {
   name: 'App',
   data() {
@@ -12,7 +12,7 @@ export default {
     }
   },
   components: {
-    TemplateRef
+    Person
   }
 
 }
